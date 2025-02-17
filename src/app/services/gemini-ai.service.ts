@@ -20,8 +20,9 @@ export class GeminiService {
   private judgeInstructions: string[];
 
   constructor() {
-    if (process.env['GOOGLE_API_KEY']) {
-      const genAI = new GoogleGenerativeAI(process.env['GOOGLE_API_KEY']);
+    const _key = import.meta.env['NG_APP_GOOGLE_API_KEY'];
+    if (_key) {
+      const genAI = new GoogleGenerativeAI(_key);
       const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
       this.genAIModel = model;
@@ -36,8 +37,9 @@ export class GeminiService {
       `If the message is very offensive or inappropriate, just reply with "${OFFENSIVE_TAG}"`,
     ];
     this.judgeInstructions = [
-      'Judge the "yo mama" roasts and rate both individually on a scale of 0 to 10.',
-      'Reply in the form of json with the following keys:',
+      'Judge the "yo mama" roasts and rate both individually on a scale of 0 to 10 (even in decimals).',
+      'Strict scoring for the human roast. If its not even a roast, give the human a zero.',
+      'Reply with a json string with the following keys:',
       'ai: The rating of the ai roast.',
       'human: The rating of the human roast.',
       'rating: The overall rating of the roast.',
@@ -126,9 +128,11 @@ export class GeminiService {
     try {
       const result = await this.genAIModel.generateContent(prompt);
       const response = result.response.text();
+      const scoreStr = response.replace(/(```json)|(```)/gi, '');
+      const scores = JSON.parse(scoreStr);
 
-      if (isJudgeResponse(response)) {
-        return response;
+      if (isJudgeResponse(scores)) {
+        return scores;
       }
 
       throw new ErrorHandler({

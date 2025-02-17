@@ -1,17 +1,26 @@
-import { Component, input } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StageComponent } from './stage/stage.component';
+
+import { BattleService } from '../services/battle.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'arena',
-  imports: [CommonModule, StageComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './arena.component.html',
   styleUrl: './arena.component.scss',
+  standalone: true,
 })
 export class ArenaComponent {
-  value = input('', { transform: trimString });
-}
+  roast: string;
+  battleService: BattleService = inject(BattleService);
 
-function trimString(value?: string): string {
-  return value?.trim() ?? '';
+  constructor() {
+    this.roast = '';
+  }
+
+  dunzo(event?: Event) {
+    this.battleService.addResponse(this.roast);
+    console.log('The value is', this.roast);
+  }
 }

@@ -1,7 +1,9 @@
 <div class="container">
   <!-- Stage -->
-  <stage [roasts]="roasts"></stage>
+  <!-- <stage [roasts]="roasts"></stage> -->
 
   <!-- Roast input -->
-  <input placeholder="Yo mama is..." [value]="value()" />
+  <!-- Square is for prop bindings and parentheses for event bindings -->
+  <input placeholder="Yo mama is..." [(ngModel)]="roast" (keyup.enter)="dunzo($event)" />
+  <button (click)="dunzo()" type="button">Submit</button>
 </div>
