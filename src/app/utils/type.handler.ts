@@ -1,7 +1,7 @@
 import { type ErrorResponse, players, type JudgeResponse } from '../app.types';
 
 export function isWithinRange(value: any): value is number {
-  return typeof value === 'number' && value >= 1 && value <= 10;
+  return typeof value === 'number' && value >= 0 && value <= 10;
 }
 
 export function isJudgeResponse(response: any): response is JudgeResponse {

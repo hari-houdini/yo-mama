@@ -29,6 +29,8 @@ export class BattleService {
     this.winner = 'Draw';
   }
 
+  // battleLogs$ = this.battleLogs.asObservable();
+
   getBattleLogs(): BattleLog[] {
     return this.battleLogs;
   }

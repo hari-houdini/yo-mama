@@ -1,9 +1,15 @@
-<div class="container">
+<div class="container flex flex-col items-center justify-center content-around h-full">
   <!-- Stage -->
-  <!-- <stage [roasts]="roasts"></stage> -->
+  <stage [roasts]="logs"></stage>
 
-  <!-- Roast input -->
-  <!-- Square is for prop bindings and parentheses for event bindings -->
-  <input placeholder="Yo mama is..." [(ngModel)]="roast" (keyup.enter)="dunzo($event)" />
-  <button (click)="dunzo()" type="button">Submit</button>
+
+  <!-- Roast Input -->
+  <div class="flex flex-row items-center justify-between content-around w-full">
+    <input class="flex-grow rounded-3xl max-h-[220px] h-full p-4 shadow-lg focus:shadow-2xl outline-none" placeholder="Yo mama is..." [(ngModel)]="roast" (keyup.enter)="dunzo($event)" />
+    <button class="flex-none p-3 rounded-full shadow-md hover:shadow-indigo-500/50 bg-indigo-500 hover:bg-indigo-600" type="button" (click)="dunzo()">
+      <rocket />
+    </button>
+  </div>
+
+
 </div>

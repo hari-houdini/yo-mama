@@ -7,7 +7,7 @@ import { ArenaComponent } from './arena/arena.component';
   selector: 'app-root',
   imports: [RouterOutlet, ArenaComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.module.css',
 })
 export class AppComponent {
   title = 'yo-mama';

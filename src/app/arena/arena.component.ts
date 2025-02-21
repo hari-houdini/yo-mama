@@ -1,26 +1,31 @@
-import { Component, input, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BattleService } from '../services/battle.service';
 import { FormsModule } from '@angular/forms';
+import { RocketSVGComponent } from '../rocket/rocket.component';
+import type { BattleLog } from '../app.types';
+import { StageComponent } from './stage/stage.component';
 
 @Component({
   selector: 'arena',
-  imports: [CommonModule, FormsModule],
+  imports: [StageComponent, RocketSVGComponent, CommonModule, FormsModule],
   templateUrl: './arena.component.html',
-  styleUrl: './arena.component.scss',
+  styleUrl: './arena.module.css',
   standalone: true,
 })
 export class ArenaComponent {
   roast: string;
+  logs: BattleLog[];
   battleService: BattleService = inject(BattleService);
 
   constructor() {
     this.roast = '';
+    this.logs = this.battleService.getBattleLogs();
   }
 
-  dunzo(event?: Event) {
-    this.battleService.addResponse(this.roast);
-    console.log('The value is', this.roast);
+  async dunzo(event?: Event) {
+    const log = await this.battleService.addResponse(this.roast);
+    this.logs.push(log);
   }
 }
