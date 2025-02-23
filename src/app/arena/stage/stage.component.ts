@@ -16,6 +16,29 @@ export class StageComponent {
   roasts: BattleLog[];
 
   constructor(private battleService: BattleService) {
-    this.roasts = this.battleService.getBattleLogs();
+    this.roasts = [
+      {
+        results: 'Draw',
+        message: {
+          ai: 'Yo mama is a yo mama',
+          human: 'Yo mama is a yo mama',
+        },
+        score: {
+          ai: 8,
+          human: 8,
+        },
+      },
+      {
+        results: 'Draw',
+        message: {
+          ai: 'Yo mama is a yo mama',
+          human: 'Yo mama is a yo mama',
+        },
+        score: {
+          ai: 8,
+          human: 8,
+        },
+      },
+    ];
   }
 }

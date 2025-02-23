@@ -1,0 +1,16 @@
+<div class="grid grid-flow-row grid-cols-4 gap-3 py-4">
+  <div class="text-center rounded-md w-full p-1 col-span-4">
+    <div class="font-serif font-thin text-gray-400">
+      Round: {{ round }}
+    </div>
+    <div class="round-results">{{ roast.results }}</div>
+  </div>
+  <div class="relative text-left rounded-r-lg w-full p-3 col-span-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-500 my-2">
+    <div class="roast">AI: {{ roast.message.ai }}</div>
+    <div class="absolute -bottom-3 -right-3 text-white p-3 rounded-full bg-conic-180 from-green-600 via-orange-300 to-green-600">{{ roast.score.ai }}</div>
+  </div>
+  <div class="relative text-right rounded-l-lg w-full p-3 col-span-3 col-start-2 bg-gradient-to-r from-purple-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% my-2">
+    <div class="roast">Human: {{ roast.message.human }}</div>
+    <div class="absolute -bottom-3 -left-3 text-white p-3 rounded-full bg-conic-180 from-red-600 via-orange-300 to-red-600">{{ roast.score.human }}</div>
+  </div>
+</div>

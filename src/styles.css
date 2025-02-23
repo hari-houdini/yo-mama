@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@0..45,0..100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Honk:SHLN@100&family=Princess+Sofia&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-honk: 'Honk', sans-serif;
+  --font-barry: 'Barriecito', cursive;
+  --font-princess: "Princess Sofia", serif;
 }
 
 @layer base {

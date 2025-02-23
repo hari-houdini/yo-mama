@@ -1,6 +1,6 @@
 <div class="container flex flex-col items-center justify-center content-around h-full">
 
-    <div *ngFor="let roast of roasts; index as idx;">
+    <div *ngFor="let roast of roasts; index as idx;" class="w-full">
       <battle [roast]="roast" [round]="idx + 1"></battle>
     </div>
 

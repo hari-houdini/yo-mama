@@ -25,7 +25,6 @@ export class ArenaComponent {
   }
 
   async dunzo(event?: Event) {
-    const log = await this.battleService.addResponse(this.roast);
-    this.logs.push(log);
+    await this.battleService.addResponse(this.roast);
   }
 }

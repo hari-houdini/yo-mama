@@ -1,0 +1,9 @@
+.roast {
+  font-family: var(--font-barry);
+  color: white;
+}
+
+.round-results {
+  font-family: var(--font-princess);
+  /* color: white; */
+}

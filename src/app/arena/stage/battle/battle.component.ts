@@ -12,13 +12,10 @@ import { type BattleLog } from '../../../app.types';
 })
 export class BattleComponent {
   @Input()
-  roast: BattleLog;
+  roast = {} as BattleLog;
 
   @Input()
-  round: number;
+  round: number = 1;
 
-  constructor(private battleService: BattleService) {
-    this.roast = {} as BattleLog;
-    this.round = 1;
-  }
+  constructor(private battleService: BattleService) {}
 }
